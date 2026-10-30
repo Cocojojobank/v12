@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: jk-capital
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: PUBLIC_REGISTRATION
+        value: "false"
+      - key: DEMO_MODE
+        value: "false"
+      - key: CURRENCY
+        value: EUR
